@@ -4,15 +4,20 @@ class Solution {
         for(int i=0; i<nums.length; i++){
             str[i]=String.valueOf(nums[i]);
         }
-        Arrays.sort(str, new Comparator<String>()
-        {
-            public int compare(String s1, String s2)
-            {
-                String leftRight = s1+s2;
-                String rightLeft = s2+s1;
-                return -leftRight.compareTo(rightLeft);
+     String s1="";
+    String s2="";
+       for(int i=0; i<str.length;i++){
+        for (int j=i+1; j<str.length; j++){
+            s1=(str[i]+str[j]);
+            s2 =(str[j]+str[i]);
+             
+            if((s2).compareTo(s1)>0){
+               String temp=str[i];
+               str[i]=str[j];
+               str[j]=temp;
             }
-        });
+        }
+       }
          StringBuilder sb=new StringBuilder();
          for( String s:str){
             sb.append(s);
